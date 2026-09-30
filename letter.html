@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Special Surprise For You ✨</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root{
+  --pink:#ff4f91; --rose:#ff86b7; --cream:#fff8ef; --ink:#3b2430;
+  --gold:#ffd76a; --purple:#8b5cf6;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:"DM Sans",sans-serif}
+body{
+  overflow-x:hidden;color:#fff;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(255,79,145,.28),transparent 28%),
+    radial-gradient(circle at 80% 70%,rgba(139,92,246,.22),transparent 30%),
+    linear-gradient(135deg,#17091d,#3a102c 48%,#120b22);
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(#fff 1px,transparent 1px);
+  background-size:42px 42px;animation:stars 18s linear infinite;
+}
+@keyframes stars{to{background-position:42px 84px}}
+
+.scene{position:relative;min-height:100vh;display:grid;place-items:center;padding:70px 18px 100px}
+.orb{position:fixed;border-radius:50%;filter:blur(2px);pointer-events:none;opacity:.55}
+.orb.a{width:180px;height:180px;background:#ff4f91;left:-60px;top:12%;animation:float 7s ease-in-out infinite}
+.orb.b{width:230px;height:230px;background:#7c3aed;right:-80px;bottom:8%;animation:float 9s ease-in-out infinite reverse}
+@keyframes float{50%{transform:translateY(-35px) scale(1.08)}}
+
+.card{width:min(920px,100%);position:relative;z-index:2}
+.title{text-align:center;margin-bottom:25px;animation:drop .9s cubic-bezier(.2,.9,.2,1)}
+.title .eyebrow{font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;opacity:.75}
+.title h1{margin:8px 0 0;font-family:Caveat,cursive;font-size:clamp(3rem,8vw,6rem);line-height:.9;text-shadow:0 0 25px rgba(255,105,180,.45)}
+@keyframes drop{from{opacity:0;transform:translateY(-30px) scale(.96)}to{opacity:1;transform:none}}
+
+.envelope{
+  position:relative;max-width:780px;margin:auto;min-height:560px;
+  filter:drop-shadow(0 30px 55px rgba(0,0,0,.42));
+  perspective:1200px;
+}
+.envelope-back{
+  position:absolute;inset:0;border-radius:24px;background:linear-gradient(145deg,#ff8fba,#d83c78);
+  overflow:hidden;border:1px solid rgba(255,255,255,.35);
+}
+.envelope-back:after{
+  content:"";position:absolute;inset:auto 0 0;border-style:solid;
+  border-width:0 390px 260px;border-color:transparent transparent rgba(154,25,76,.28);
+}
+.flap{
+  position:absolute;z-index:3;left:0;right:0;top:0;height:38%;
+  background:linear-gradient(145deg,#ffb0cc,#ee5f99);
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top;animation:flap 1.4s .5s cubic-bezier(.2,.85,.25,1) both;
+  filter:drop-shadow(0 10px 12px rgba(90,10,45,.18));
+}
+@keyframes flap{from{transform:rotateX(-70deg);opacity:.2}to{transform:rotateX(0);opacity:1}}
+
+.paper{
+  position:absolute;z-index:3;left:7%;right:7%;top:6%;bottom:7%;
+  border-radius:18px;background:var(--cream);color:var(--ink);
+  padding:54px clamp(24px,6vw,64px) 45px;
+  box-shadow:0 16px 35px rgba(70,16,39,.28);
+  transform:translateY(38px) scale(.94);opacity:0;
+  animation:paperIn 1.1s 1.15s cubic-bezier(.16,1,.3,1) forwards;
+  overflow:auto;
+}
+@keyframes paperIn{to{transform:none;opacity:1}}
+.paper:before{
+  content:"";position:absolute;inset:16px;border:1px dashed rgba(255,79,145,.3);border-radius:12px;pointer-events:none;
+}
+.paper:after{
+  content:"✦";position:absolute;right:25px;top:15px;color:var(--pink);font-size:24px;animation:twinkle 1.7s ease-in-out infinite;
+}
+@keyframes twinkle{50%{transform:rotate(20deg) scale(1.25);opacity:.5}}
+
+.letter-text{
+  position:relative;z-index:2;white-space:pre-wrap;
+  font-family:Caveat,cursive;font-size:clamp(1.45rem,2.5vw,2rem);line-height:1.35;
+  outline:none;min-height:300px;cursor:text;
+}
+.letter-text:focus{box-shadow:0 0 0 4px rgba(255,79,145,.1);border-radius:8px}
+.hint{position:relative;z-index:2;text-align:center;color:#a76a7f;font-size:.75rem;margin-top:10px;opacity:.7}
+
+.seal{
+  position:absolute;z-index:12;left:50%;top:43%;transform:translate(-50%,-50%);
+  width:78px;height:78px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(145deg,#ff5d9d,#d8276b);border:5px solid #ffc5dc;
+  box-shadow:0 8px 20px rgba(100,0,45,.3);font-size:30px;
+  animation:seal 1s 1.7s both, pulse 2.5s 3s ease-in-out infinite;
+}
+@keyframes seal{from{opacity:0;transform:translate(-50%,-50%) scale(.2) rotate(-30deg)}to{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(0)}}
+@keyframes pulse{50%{box-shadow:0 0 0 12px rgba(255,93,157,.08),0 8px 25px rgba(100,0,45,.35)}}
+
+.controls{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px;animation:rise 1s 1.8s both}
+button,.back{
+  border:0;border-radius:999px;padding:13px 22px;font-weight:700;cursor:pointer;
+  color:#fff;background:linear-gradient(135deg,var(--pink),#d83c78);
+  box-shadow:0 10px 25px rgba(255,79,145,.24);transition:.25s;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+}
+button:hover,.back:hover{transform:translateY(-3px) scale(1.02)}
+.music{position:fixed;right:18px;top:18px;z-index:20}
+.music button{width:48px;height:48px;padding:0;justify-content:center;border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(10px)}
+
+.spark{position:fixed;pointer-events:none;z-index:10;font-size:18px;animation:riseSpark 2.8s linear forwards}
+@keyframes riseSpark{from{opacity:0;transform:translateY(0) scale(.3) rotate(0)}15%{opacity:1}to{opacity:0;transform:translateY(-180px) scale(1.2) rotate(160deg)}}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+.modal-overlay{position:fixed;inset:0;z-index:50;display:none;place-items:center;padding:20px;background:rgba(9,3,15,.78);backdrop-filter:blur(10px)}
+.modal-overlay.active{display:grid;animation:fade .35s}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.modal{width:min(620px,100%);max-height:85vh;overflow:auto;background:var(--cream);color:var(--ink);border-radius:25px;padding:28px;box-shadow:0 30px 80px rgba(0,0,0,.5);animation:pop .5s cubic-bezier(.16,1,.3,1)}
+@keyframes pop{from{transform:scale(.75) translateY(30px);opacity:0}to{transform:none;opacity:1}}
+.modal h2{font-family:Caveat;font-size:2.7rem;margin:0 0 18px;color:#c52d6a}
+.close{float:right;background:#f4d7e2;color:#8d2850;box-shadow:none;padding:7px 12px}
+.song{display:flex;align-items:center;gap:14px;padding:12px;border-radius:16px;background:#fff;margin:10px 0}
+.song img{width:58px;height:58px;object-fit:cover;border-radius:12px}
+.song-info{flex:1}.song-title{font-weight:700}.song-artist{font-size:.8rem;color:#9b6a7b}
+.song button{padding:9px 12px}
+
+@media(max-width:650px){
+ .scene{padding:65px 12px 80px}.envelope{min-height:650px}
+ .paper{top:5%;bottom:5%;left:4%;right:4%;padding:48px 22px 35px}
+ .flap{height:42%}.seal{top:39%;width:65px;height:65px}
+ .envelope-back:after{border-width:0 45vw 220px}
+}
+
+/* Animated handwriting reveal */
+.letter{position:relative;z-index:2;height:100%;overflow:auto;padding-right:6px}
+#typedText{
+  white-space:pre-wrap;
+  font-family:Caveat,cursive;
+  font-size:clamp(1.35rem,2.35vw,1.9rem);
+  line-height:1.38;
+  min-height:390px;
+}
+.typing-cursor{
+  display:inline-block;width:2px;height:1.1em;background:#e33b78;
+  vertical-align:-.15em;margin-left:2px;animation:cursorBlink .65s infinite;
+}
+@keyframes cursorBlink{50%{opacity:0}}
+
+</style>
+</head>
+<body>
+<div class="orb a"></div><div class="orb b"></div>
+<div class="music"><button id="musicBtn" aria-label="Play music">🔇</button></div>
+
+<main class="scene">
+  <section class="card">
+    <header class="title">
+      <div class="eyebrow">A little piece of My heart</div>
+      <h1>For My Dearest Kitu ji ❤️</h1>
+    </header>
+
+    <div class="envelope">
+      <div class="envelope-back"></div>
+      <div class="flap"></div>
+      <div class="paper">
+        <div class="letter">
+          <div id="typedText"></div><span id="typingCursor" class="typing-cursor"></span>
+        
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <a class="back" href="cake.html">← Back to Birthday Cake</a>
+    </div>
+  </section>
+</main>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="close" id="closeBtn">✕</button>
+    <h2>🎉 Your Special Surprise! 🎉</h2>
+    <p>Songs that remind me of us 💕</p>
+    <div class="song"><img src="3.jpg" alt="Song cover"><div class="song-info"><div class="song-title">Our Favorite Memory</div><div class="song-artist">That Artist You Love</div></div><button>▶</button></div>
+    <div class="song"><img src="1.jpg" alt="Song cover"><div class="song-info"><div class="song-title">That Summer Night</div><div class="song-artist">The Adventure Band</div></div><button>▶</button></div>
+    <div class="song"><img src="6.jpg" alt="Song cover"><div class="song-info"><div class="song-title">Inside Joke Anthem</div><div class="song-artist">Laugh Out Loud</div></div><button>▶</button></div>
+    <div class="song"><img src="2.jpeg" alt="Song cover"><div class="song-info"><div class="song-title">Remember When</div><div class="song-artist">The Friendship Vibes</div></div><button>▶</button></div>
+    <div class="song"><img src="5.jpg" alt="Song cover"><div class="song-info"><div class="song-title">Birthday Wishes</div><div class="song-artist">Happy Songs</div></div><button>▶</button></div>
+  </div>
+</div>
+
+<audio id="bgMusic" loop><source src="music/birthday.mpeg" type="audio/mpeg"></audio>
+<script>
+const music=document.getElementById('bgMusic'), musicBtn=document.getElementById('musicBtn');
+music.volume=.55;
+musicBtn.onclick=()=>{ if(music.paused){music.play().then(()=>musicBtn.textContent='🔊').catch(()=>{});}else{music.pause();musicBtn.textContent='🔇';} };
+
+const modal=document.getElementById('modal');
+document.getElementById('surpriseBtn').onclick=()=>{
+  modal.classList.add('active');
+  burst();
+};
+document.getElementById('closeBtn').onclick=()=>modal.classList.remove('active');
+modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('active')});
+
+function burst(){
+  const icons=['✨','💖','⭐','💗','🎀','✨'];
+  for(let i=0;i<28;i++){
+    const s=document.createElement('span');s.className='spark';
+    s.textContent=icons[Math.floor(Math.random()*icons.length)];
+    s.style.left=(20+Math.random()*60)+'vw';
+    s.style.top=(55+Math.random()*25)+'vh';
+    s.style.animationDelay=(Math.random()*.5)+'s';
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),3300);
+  }
+}
+setTimeout(()=>burst(),2600);
+document.addEventListener('click',e=>{
+  if(e.target.closest('button,.back,.letter-text')) return;
+  const s=document.createElement('span');s.className='spark';s.textContent='✨';
+  s.style.left=e.clientX+'px';s.style.top=e.clientY+'px';
+  document.body.appendChild(s);setTimeout(()=>s.remove(),2800);
+});
+</script>
+
+<script>
+
+const letterContent = `My dearest kitu ji,
+Aapko janamdin ki bahut-bahut shubhkamnayein, (Kittu ji )Madam Ji.
+Aap mere liye sach me, sachchi me bahut zyada special ho. Ye sirf shabdon mein kehna mushkil hai ki aap mere liye kya mayne rakhti hain.
+Aapko paa kar main khud ko bahut hi khushnaseeb mehsoos karta hu. Aap meri zindagi mein aayi uske liye bhot bhot dhanaywad apka. Aap mere liye bhot maayenge rkhte hai. 
+Meri bas ek hi dua hai, aur ek hi khwahish hai - apni poori zindagi aapke saath bitani hai, har sukh-dukh mein aapke saath rehna hai.
+Aap hamesha aise hi muskurati raho, yahi meri rab se prarthana hai. aapki Har ek Ichchha Puri ho Mahadev ki kripya se
+Apko Janamdin Mubarak Ho kituu ji❤️☺️
+
+With all my love,
+Shubhjeet`;
+
+const typedText=document.getElementById("typedText");
+const typingCursor=document.getElementById("typingCursor");
+let pos=0, typingDone=false;
+
+function typeLetter(){
+  if(pos < letterContent.length){
+    typedText.textContent += letterContent[pos++];
+    typedText.parentElement.scrollTop = typedText.parentElement.scrollHeight;
+    setTimeout(typeLetter, letterContent[pos-1] === "\\n" ? 180 : 38);
+  } else {
+    typingDone=true;
+    typingCursor.style.display="none";
+  }
+}
+setTimeout(typeLetter,2200);
+
+typedText.addEventListener("click",()=>{
+  if(!typingDone)return;
+  typedText.contentEditable="true";
+  typedText.focus();
+});
+</script>
+
+</body>
+</html>
